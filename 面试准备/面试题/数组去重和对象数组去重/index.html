@@ -1,0 +1,88 @@
+<!doctype html>
+<title></title>
+
+<body>
+
+</body>
+<script type="text/javascript">
+  (function () {
+    array = [1, 2, 3, 3, 3];//测试数组
+    objArray = [{ age: 1, name: 'a' }, { age: 2, name: 'a' }, { age: 3, name: 'c' }];//测试对象数组
+    console.log(func1(array));//遍历数组法
+    console.log(func2(array));//排序法
+    console.log(func3(array));//对象法
+    console.log(func4(objArray));//将对象数组中name属性相同的项去重
+    console.log(func5(objArray));//使用数组内置的reduce方法将对象数组中name属性相同的项去重
+  })()
+
+  //遍历数组法
+  function func1(array) {
+    var temp = [];//临时数组
+    //遍历当前数组
+    for (var i = 0; i < array.length; i++) {
+      //判断array[i]是否在临时数组中，不在则将array[i]的值复制到temp里
+      //indexOf()方法可返回某个指定的字符串或数组值在字符串或数组中首次出现的位置，若不在其中则返回-1
+      if (temp.indexOf(array[i]) === -1)
+        temp.push(array[i]);
+    }
+    return temp;
+  }
+
+  //排序法
+  function func2(array) {
+    var temp = [];//临时数组
+    array.sort();//先给当前数组排序
+    temp.push(array[0]);
+    //因为数组已经经过排序，所以重复元素一定相邻，判断当前数组第i个元素与temp的最后一个元素是否相等，不相等时才复制元素
+    for (var i = 1; i < array.length; i++) {
+      if (array[i] != temp[temp.length - 1])
+        temp.push(array[i]);
+    }
+    return temp;
+  }
+
+  //对象法
+  function func3(array) {
+    var temp = [];//临时数组
+    var json = {};//创建一个空对象
+    //将当前数组的元素值当作对象的属性，遍历数组，比对对象，如果对象的这个属性不存在则将当前数组元素复制到临时数组，并添加该属性且将属性值赋值为1
+    for (var i = 0; i < array.length; i++) {
+      if (!json[array[i]]) {//如果对象没有该属性
+        temp.push(array[i]);
+        json[array[i]] = 1;//添加属性，将属性值赋值为1
+      }
+    }
+    return temp;
+  }
+
+  //将对象数组中name属性相同的项去重
+  function func4(objArray) {
+    var result = [];//去重后返回的结果数组
+    var temp = {};//临时对象
+    //将对象数组中每一项的name值作为属性，若temp不拥有此属性时则为temp添加此属性且将其值赋为true，并将这一项push到结果数组中
+    for (var i = 0; i < objArray.length; i++) {
+      var myname = objArray[i].name;
+      if (temp[myname]) {//如果temp中已经存在此属性名，则说明遇到重复项
+        continue;//不继续执行接下来的代码，跳转至循环开头
+      }
+      temp[myname] = true;//为temp添加此属性（myname）且将其值赋为true
+      result.push(objArray[i]);//将这一项复制到结果数组result中去
+    }
+    return result;
+  }
+
+  //使用reduce方法将对象数组中name属性相同的项去重
+  function func5(objArray) {
+    var hash = {};
+    //reduce方法有两个参数，第一个参数是一个callback，用于针对数组项的操作；第二个参数则是传入的初始值，这个初始值用于单个数组项的操作。
+    objArray = objArray.reduce(function (item, next) {//这是针对数组项操作的函数，对于每个数组项，reduce方法都会将其调用一次
+      //可使用最多四个参数来声明回调函数（第一个参数：通过上一次调用回调函数获得的值;第二个参数：当前数组元素的值；第三个参数：当前数组元素的数字索引；第四个参数：包含该元素的数组对象）
+      //这里只使用了两个参数，所以item和next分别代表上一次调用回调函数后的值和objArray项值
+      hash[next.name] ? '' : hash[next.name] = true && item.push(next);//与func3逻辑相似 
+      return item;
+    }, []);//初始值是一个空对象，使用reduce方法返回的是空对象通过叠加执行之后的结果
+    return objArray;
+  }
+</script>
+
+</html>
