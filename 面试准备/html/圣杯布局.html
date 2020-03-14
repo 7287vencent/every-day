@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      min-width: 500px;
+    }
+
+    #container {
+      overflow: auto;
+      /* BFC */
+      padding-left: 180px;
+      padding-right: 150px;
+    }
+
+    #container .column {
+      height: 200px;
+      position: relative;
+      float: left;
+    }
+
+    #center {
+      background-color: #e9e9e9;
+      width: 100%;
+    }
+
+    #left {
+      background-color: red;
+      width: 180px;
+      right: 180px;
+      margin-left: -100%
+    }
+
+    #right {
+      background-color: blue;
+      width: 150px;
+      margin-right: -150px;
+    }
+
+    #header,
+    #footer {
+      background-color: #c9c9c9;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 该方案几个注意的点：
+
+center元素位于left和right之前，可以让center先渲染，用户首先看到页面的主要内容。
+container （width:100%）包裹着三栏内容，通过padding-left和padding-right为左右两栏腾出空间。
+center，left，right都设置一个左浮动（float:left），所以container内部是一个浮动流。
+通过给 left 元素设置 margin-left: -100%，使得left移动到container的左上角，在通过position：relative； right: 180px，移动到container的padding-left的位置上去。
+给right 元素设置 margin-right: -150px，使得它移动到container的padding-right的位置上去。
+ps: margin-left 和 margin-right 利用了浮动流的特性，使得第一行能够同时容纳center，left，right这三个元素。
+ -->
+  <div id="header">#header</div>
+
+  <div id="container">
+    <div id="center" class="column">#center</div>
+    <div id="left" class="column">#left</div>
+    <div id="right" class="column">#right</div>
+  </div>
+
+  <div id="footer">#footer</div>
+</body>
+
+</html>
