@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>城市产品销售额 Top10</title>
+</head>
+
+<body>
+  <div id="container" />
+  <script src="https://gw.alipayobjects.com/os/lib/antv/g2/4.0.1/dist/g2.min.js"></script>
+  <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.data-set-0.11.1/dist/data-set.js"></script>
+  <script>
+    // < !--浏览器引入，请使用全局命名空间 G2，如 new Chart() 改为 new G2.Chart，即可运行。 -->
+    const data = [
+      { city: '石家庄', type: '水果', value: 0 },
+      { city: '石家庄', type: '米面', value: 8500 },
+      { city: '石家庄', type: '特产零食', value: 10000 },
+      { city: '石家庄', type: '茶叶', value: 7000 },
+      { city: '深圳', type: '水果', value: 9000 },
+      { city: '深圳', type: '米面', value: 8500 },
+      { city: '深圳', type: '特产零食', value: 11000 },
+      { city: '深圳', type: '茶叶', value: 6000 },
+      { city: '温州', type: '水果', value: 16000 },
+      { city: '温州', type: '米面', value: 5000 },
+      { city: '温州', type: '特产零食', value: 6000 },
+      { city: '温州', type: '茶叶', value: 10000 },
+      { city: '宁波', type: '水果', value: 14000 },
+      { city: '宁波', type: '米面', value: 9000 },
+      { city: '宁波', type: '特产零食', value: 10000 },
+      { city: '宁波', type: '茶叶', value: 9000 },
+      { city: '无锡', type: '水果', value: 14000 },
+      { city: '无锡', type: '米面', value: 9000 },
+      { city: '无锡', type: '特产零食', value: 10000 },
+      { city: '无锡', type: '茶叶', value: 6000 },
+      { city: '杭州', type: '水果', value: 9000 },
+      { city: '杭州', type: '米面', value: 8500 },
+      { city: '杭州', type: '特产零食', value: 10000 },
+      { city: '杭州', type: '茶叶', value: 6000 },
+      { city: '北京', type: '水果', value: 17000 },
+      { city: '北京', type: '米面', value: 6000 },
+      { city: '北京', type: '特产零食', value: 7000 },
+      { city: '北京', type: '茶叶', value: 10000 },
+      { city: '上海', type: '水果', value: 18000 },
+      { city: '上海', type: '米面', value: 11000 },
+      { city: '上海', type: '特产零食', value: 15000 },
+      { city: '上海', type: '茶叶', value: 14000 },
+    ];
+
+    const data2 = [
+      { city: '石家庄', type: '水果', value: 0 },
+      { city: '石家庄', type: '米面', value: 0 },
+      { city: '石家庄', type: '特产零食', value: 0 },
+      { city: '石家庄', type: '茶叶', value: 0 },
+      { city: '深圳', type: '水果', value: 0 },
+      { city: '深圳', type: '米面', value: 0 },
+      { city: '深圳', type: '特产零食', value: 0 },
+      { city: '深圳', type: '茶叶', value: 0 },
+      { city: '温州', type: '水果', value: 0 },
+      { city: '温州', type: '米面', value: 0 },
+      { city: '温州', type: '特产零食', value: 0 },
+      { city: '温州', type: '茶叶', value: 0 },
+      { city: '宁波', type: '水果', value: 0 },
+      { city: '宁波', type: '米面', value: 0 },
+      { city: '宁波', type: '特产零食', value: 0 },
+      { city: '宁波', type: '茶叶', value: 0 },
+      { city: '无锡', type: '水果', value: 0 },
+      { city: '无锡', type: '米面', value: 0 },
+      { city: '无锡', type: '特产零食', value: 0 },
+      { city: '无锡', type: '茶叶', value: 0 },
+      { city: '杭州', type: '水果', value: 0 },
+      { city: '杭州', type: '米面', value: 0 },
+      { city: '杭州', type: '特产零食', value: 0 },
+      { city: '杭州', type: '茶叶', value: 0 },
+      { city: '北京', type: '水果', value: 0 },
+      { city: '北京', type: '米面', value: 0 },
+      { city: '北京', type: '特产零食', value: 0 },
+      { city: '北京', type: '茶叶', value: 0 },
+      { city: '上海', type: '水果', value: 0 },
+      { city: '上海', type: '米面', value: 0 },
+      { city: '上海', type: '特产零食', value: 0 },
+      { city: '上海', type: '茶叶', value: 0 },
+    ];
+
+
+    const chart = new G2.Chart({
+      container: 'container',
+      autoFit: true,
+      height: 500,
+    });
+
+    chart.scale(1, -1);
+
+    chart.data(data);
+
+    chart.scale({
+      value: {
+        max: 20000,
+        min: 0,
+        alias: '销售额（万）',
+      },
+    });
+
+    chart.axis('city', {
+      label: {
+        style: {
+          fill: '#aaaaaa',
+          fontSize: 12,
+        },
+      },
+      tickLine: null,
+      title: null,
+    });
+    chart.axis('value', {
+      label: {
+        style: {
+          fill: '#aaaaaa',
+          fontSize: 12,
+        },
+      },
+      title: {
+        style: {
+          fontSize: 12,
+          fontWeight: 300,
+        },
+        position: 'end'
+      },
+    });
+
+    chart.legend({
+      position: 'right-bottom',
+    });
+
+    chart.tooltip({
+      shared: true,
+      showMarkers: false,
+    });
+
+    chart
+      .interval()
+      .position('city*value')
+      .color('type')
+      .adjust([
+        {
+          type: 'dodge',
+          marginRatio: 0.3,
+        },
+      ])
+      // .animate({
+      //   enter: {
+      //     duration: 1
+      //   }
+      // })
+      .animate({
+        appear: {
+          animation: 'scale-in-y',
+          delay: '0',
+          duration: '2000'
+        }
+      })
+
+    // chart.interaction('active-region');
+    // chart.interaction('legend-highlight');
+
+    chart.render();
+    // 设置动画的效果 只改变数据的值
+    setInterval(() => {
+      chart.changeData(data2)
+      console.log('消失动画')
+      setTimeout(() => {
+        console.log('进入=>>>>动画')
+        chart.changeData(data)
+      }, 1000);
+    }, 5000);
+  </script>
+</body>
+
+</html>
