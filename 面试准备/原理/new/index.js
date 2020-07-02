@@ -13,18 +13,3 @@ function _new () {
   //如果构造函数返回的不是一个对象，返回创建的新对象
   return target;
 }
-
-// function ne () {
-//   let obj = {}
-//   // 构造函数和参数
-//   let [constructor, ...args] = [...arguments]
-//   // 让obj 的隐式原型等于构造函数的显示原型
-//   obj.__proto__ = constructor.prototype
-//   let result = constructor.apply(obj, ...args)
-//   if (result && (typeof (result) == "object" || typeof (result) === 'function')) {
-//     //如果构造函数执行的结构返回的是一个对象，那么返回这个对象
-//     return result
-//   }
-//   //如果构造函数返回的不是一个对象，返回创建的新对象
-//   return obj
-// }
