@@ -9,3 +9,6 @@ cli/node_modules
 node_modules/
 
 package-lock.json
+
+# 不提交 png 图片
+*.png 
