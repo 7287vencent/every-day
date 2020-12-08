@@ -4,6 +4,7 @@ cli
 
 cli/node_modules
 
+ecli
 .vscode
 
 node_modules/
