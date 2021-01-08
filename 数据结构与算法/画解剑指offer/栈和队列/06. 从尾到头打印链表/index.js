@@ -10,14 +10,18 @@
  * @return {number[]}
  */
 var reversePrint = function (head) {
-  let stack = []
+  let stack = [];
   while (head) {
-    stack.push(head.val)
-    head = head.next
+    stack.push(head.val);
+    head = head.next;
   }
-  let res = []
-  for (let i = 0, len = stack.length; i < len; i++) {
-    res.push(stack.pop())
+  // 这里有两种解决方法
+  // ? 第一种 直接reverse 数组
+  // return stack.reverse();
+  // ? 第二种 从栈中push出结果
+  let res = [];
+  while (stack.length) {
+    res.push(stack.pop());
   }
-  return res
+  return res;
 };
