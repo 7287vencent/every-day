@@ -30,3 +30,7 @@ ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, 以及 ans.next.next.next 
 [官方题解](https://leetcode-cn.com/problems/middle-of-the-linked-list/solution/lian-biao-de-zhong-jian-jie-dian-by-leetcode-solut/)
 #### 方法一：快慢指针
 - 用两个指针 `slow` 与 `fast` 一起遍历链表。`slow` 一次走一步，`fast` 一次走两步。那么当 `fast` 到达链表的末尾时，`slow` 必然位于中间。
+  
+#### `复杂度分析`
+- 时间复杂度：`O(N)`，其中 `N` 是给定链表的结点数目。
+- 空间复杂度：`O(1)`，只需要常数空间存放 `slow` 和 `fast` 两个指针。
