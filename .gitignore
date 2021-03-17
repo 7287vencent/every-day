@@ -14,3 +14,4 @@ package-lock.json
 # 不提交 png 图片
 *.png 
 *.jpg
+*jpeg
