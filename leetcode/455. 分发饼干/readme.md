@@ -33,6 +33,7 @@
 - 0 <= s.length <= 3 * 104
 - 1 <= g[i], s[j] <= 231 - 1
 ### 解题思路
+[官方题解](https://leetcode-cn.com/problems/assign-cookies/solution/fen-fa-bing-gan-by-leetcode-solution-50se/)
 #### 方法一：排序 + 贪心
 首先对数组 `g` 和 `s` 排序，然后从小到大遍历 `g` 中的每个元素，对于每个元素找到能满足该元素的 `s` 中的最小的元素。具体而言，令 `i` 是 `g` 的下标，`j` 是 `s` 的下标，初始时 `i` 和 `j` 都为 `0`，进行如下操作。
 
