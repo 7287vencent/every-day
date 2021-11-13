@@ -5,7 +5,7 @@
 
 示例 1：
 
-![img](211-1.jpeg)
+![img](221-1.jpeg)
 
 
 ```js
@@ -14,7 +14,7 @@
 ```
 示例 2：
 
-![img](211-2.jpeg)
+![img](221-2.jpeg)
 
 ```js
 输入：matrix = [["0","1"],["1","0"]]
@@ -38,7 +38,7 @@
 ### 解题思路
 [官方题解](https://leetcode-cn.com/problems/maximal-square/solution/zui-da-zheng-fang-xing-by-leetcode-solution/)
 
-![img](211-3.png)
-![img](211-4.png)
-![img](211-5.png)
-![img](211-6.png)
+![img](221-3.png)
+![img](221-4.png)
+![img](221-5.png)
+![img](221-6.png)
