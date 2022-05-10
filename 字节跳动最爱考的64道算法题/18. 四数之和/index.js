@@ -4,7 +4,7 @@
  * @return {number[][]}
  */
 var fourSum = function (nums, target) {
-  let result = [];
+  t result = [];
   if (nums.length < 4) {
     return result;
   }
